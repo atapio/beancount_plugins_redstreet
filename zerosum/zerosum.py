@@ -141,7 +141,7 @@ Invoking the plugin:
 First, an example:
 
     plugin "beancount.plugins.zerosum" "{
-     'zerosum_accounts' : { 
+     'zerosum_accounts' : {
      'Assets:Zero-Sum-Accounts:Bank-Account-Transfers' : ('Assets:ZSA-Matched:Bank-Account-Transfers', 30),
      'Assets:Zero-Sum-Accounts:Credit-Card-Payments'   : ('Assets:ZSA-Matched:Credit-Card-Payments'  ,  6),
      'Assets:Zero-Sum-Accounts:Temporary'              : ('Assets:ZSA-Matched:Temporary'             , 90),
@@ -163,8 +163,8 @@ from beancount.core import data
 from beancount.core import account
 from beancount.core import getters
 from beancount.core import flags
+from beancount.core import prices
 from beancount.ops import holdings
-from beancount.ops import prices
 from beancount.parser import options
 from beancount.parser import printer
 
@@ -281,7 +281,7 @@ def zerosum(entries, options_map, config):
     new_open_entries = create_open_directives(new_accounts, entries)
 
     print("Zerosum: {}/{} postings matched. {} multiple matches. {} new accounts added.".format(match_count, zerosum_postings_count, multiple_match_count, len(new_open_entries)))
-    
+
     # it's important to preserve and return 'entries', which was the input
     # list. This way, we won't inadvertantly add/remove entries from the
     # original list of entries.
